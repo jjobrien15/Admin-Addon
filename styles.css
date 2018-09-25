@@ -1,3 +1,4 @@
+
 .nav{
   position: fixed;
   top:0;
@@ -6,6 +7,9 @@
   height: 60px;
   width: 100%;
   border-bottom: 1px solid rgba(211, 211, 211, 0.5);
+  background: grey;
+  color: #fff;
+  z-index: 1000;
 }
 .sidenav{
   margin-top: 60px;
@@ -16,12 +20,14 @@
   flex-direction: column;
   height: 100%;
   width: 250px;
-  background: #fff;
+  background: grey;
+  color: #fff;
   border-right: 1px solid rgba(211, 211, 211, 0.5);
+  z-index: 1000;
 }
 .nav-link,
 .sidenav-link{
-  color: #808080;
+  color: #fff;
   z-index: 1000;
 }
 .nav-link{
@@ -36,18 +42,54 @@
   padding: 1rem;
   border-bottom: 1px solid rgba(211, 211, 211, 0.5);
 }
+.sidenav p{
+  padding-top: 1rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-content: flex-end;
+}
+.content ul{
+  padding-left: 0;
+}
+.heading-content{
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #000
+}
+.service{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+.service a{
+  margin-right: 0.5rem;
+}
 .content{
   margin-left: 300px !important;
   margin-top: 100px !important;
+  padding: 0 2rem;
+}
+.inner-content{
+  width: 100%;
 }
 .spacer{
   display: flex;
   flex:1;
+}
+.center{
+  display:flex;
+  justify-content: center;
+}
+.footer{
+  text-align: center;
+}
+.float-right{
+  float:right;
 }
 .nav h1{
   padding: 0 1rem;
 }
 
 .btn{
-
+  margin: 1rem 0;
 }

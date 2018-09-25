@@ -12,7 +12,6 @@
 
  	$formdata['uname'] = trim($_POST['uname']);
  	$formdata['pwd'] = trim($_POST['pwd']);
-
 //Checking for empty form values
 
  	if(empty($formdata['uname']) || empty($formdata['pwd'])){
@@ -40,9 +39,11 @@
  				$stmt->bindValue(":pwd", $formdata['pwd']);
  				$stmt->execute();
  				$row = $stmt->fetch(PDO::FETCH_ASSOC);
- 				if($formdata['pwd'] == $row['pwd']){
+        //Hash password.. store in db 
+        echo $formdata['pwd'] . "/////" . $row['pwd'];
+ 				if(password_verify($formdata['pwd'], $row['pwd'])){
  					//Change this to admin site
- 					header('Location:admin.php');
+ 					header('Location:home.php');
  				}else{
  					$err=true;
  					$errmsg= "Invalid password!";
