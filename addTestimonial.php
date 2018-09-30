@@ -4,13 +4,15 @@ require 'header.inc.php';
 require 'nav.inc.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  $newService = $_POST['newService'];
+  $author = $_POST['author'];
+  $body = $_POST['body'];
   try{
-    $sql = "INSERT INTO services(servname) VALUES (:servname)";
+    $sql = "INSERT INTO testimonials(author, body) VALUES (:author, :body)";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(":servname", $newService);
+    $stmt->bindValue(":author", $author);
+    $stmt->bindValue(":body", $body);
     $stmt->execute();
-    header('Location: services.php');
+    header('Location: testimonials.php');
   }catch(Exception $e){
     echo $e->getMessage();
   }
@@ -19,19 +21,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 ?>
 <div class="content">
   <div class="heading-content">
-    <h3>Add Service</h3>
+    <h3>Add Testimonial</h3>
     <span class="spacer"></span>
     <a href="http://www.eliteimagedetailing.com" target="_blank"><div class="btn btn-primary">View Site</div></a>
   </div>
-
   <div class="inner-content">
     <form method = "POST">
       <div class="form-group">
-        <label for="newService">New Service: </label>
-        <input class="form-control" type="text" name="newService"/>
+        <label for="author">Author: </label>
+        <input class="form-control" type="text" name="author"/>
+      </div>
+      <div class="form-group">
+        <label for="body">Body: </label>
+        <textarea class="form-control" type="text" name="body" rows="10"></textarea>
       </div>
       <input class="btn btn-success" type="submit" value="Add"/>
-      <a href="services.php"><div class="btn btn-danger">Cancel</div></a>
+      <a href="testimonials.php"><div class="btn btn-danger">Cancel</div></a>
     </form>
   </div>
 

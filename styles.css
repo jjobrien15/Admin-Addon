@@ -1,4 +1,11 @@
-
+/*
+$red: #e60000;
+$grey: #c0c0c0;
+$darkGrey: #353535;
+*/
+body{
+  background: #c0c0c0;
+}
 .nav{
   position: fixed;
   top:0;
@@ -7,9 +14,14 @@
   height: 60px;
   width: 100%;
   border-bottom: 1px solid rgba(211, 211, 211, 0.5);
-  background: grey;
+  background: #353535;
   color: #fff;
   z-index: 1000;
+}
+.logo{
+  height: 100%;
+  width: auto;
+  padding-left: 55px;
 }
 .sidenav{
   margin-top: 60px;
@@ -20,7 +32,7 @@
   flex-direction: column;
   height: 100%;
   width: 250px;
-  background: grey;
+  background: #353535;
   color: #fff;
   border-right: 1px solid rgba(211, 211, 211, 0.5);
   z-index: 1000;
@@ -42,23 +54,22 @@
   padding: 1rem;
   border-bottom: 1px solid rgba(211, 211, 211, 0.5);
 }
+a:hover{
+  color:red;
+}
 .sidenav p{
   padding-top: 1rem;
   font-size: 0.75rem;
   display: flex;
   align-content: flex-end;
 }
-.content ul{
-  padding-left: 0;
-}
 .heading-content{
   display: flex;
   align-items: center;
   border-bottom: 2px solid #000
 }
-.service{
+.service, .testimonial{
   display: flex;
-  align-items: center;
   border-bottom: 1px solid grey;
 }
 .service a{
@@ -70,6 +81,7 @@
   padding: 0 2rem;
 }
 .inner-content{
+  padding: 1rem 2rem;
   width: 100%;
 }
 .spacer{
@@ -83,13 +95,27 @@
 .footer{
   text-align: center;
 }
-.float-right{
-  float:right;
+.f-right{
+  float: right;
 }
 .nav h1{
   padding: 0 1rem;
 }
-
 .btn{
-  margin: 1rem 0;
+  margin: 0.5rem 0.2rem;
+}
+table, tr{
+  width: 100%;
+}
+tr{
+  border-bottom: 1px solid #000;
+}
+td{
+  max-width: 350px;
+}
+ul{
+  list-style: none;
+}
+ul li{
+  text-decoration: none;
 }

@@ -18,26 +18,40 @@ require 'nav.inc.php';
     <h3>Services</h3>
     <span class="spacer"></span>
     <a href="addService.php"><div class="btn btn-success">Add Service</div></a>
+    <a href="http://www.eliteimagedetailing.com" target="_blank"><div class="btn btn-primary">View Site</div></a>
   </div>
     <div class="inner-content">
-      <ul>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Service</th>
+          <th class="text-right">Options</th>
+        </tr>
         <?php
           if(count($service) > 0){
             $serviceCount = 0;
             foreach($service as $serv){
               $serviceCount ++;
         ?>
-          <li class="service">
-            <?php echo $serv['servname']; ?>
+          <tr>
+            <td>
+              <?php echo $serv['id']; ?>
+            </td>
             <span class="spacer"></span>
-            <a href="updateService.php?id=<?php echo $serv['id'];?>"><div class="btn btn-primary">Edit</div></a>
-            <a href="deleteService.php?id=<?php echo $serv['id'];?>"><div class="btn btn-danger">Delete</div></a>
-          </li>
+            <td>
+              <?php echo $serv['servname']; ?>
+            </td>
+            <span class="spacer"></span>
+            <td class="text-right">
+              <a href="updateService.php?id=<?php echo $serv['id'];?>"><div class="btn btn-primary">Edit</div></a>
+              <a href="deleteService.php?id=<?php echo $serv['id'];?>"><div class="btn btn-danger">Delete</div></a>
+            </td>
+          </tr>
         <?php
             }
           }
         ?>
-      </ul>
+      </table>
     </div>
-<?php require 'footer.inc.php'; ?>
 </div>
+<?php require 'footer.inc.php'; ?>

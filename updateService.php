@@ -27,15 +27,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   }
 ?>
 <div class="content">
-  <h3>Edit Service</h3>
-
-  <div class="col-md-6">
+  <div class="heading-content">
+    <h3>Edit Service</h3>
+    <span class="spacer"></span>
+    <a href="http://www.eliteimagedetailing.com" target="_blank"><div class="btn btn-primary">View Site</div></a>
+  </div>
+  <div class="inner-content">
     <form method="POST">
       <div class="form-group">
-        <label for="editService">Update Service: </label>
+        <label for="newServiceName">Update Service: </label>
         <input class="form-control" type="text" name="newServiceName" value="<?php echo $service['servname']; ?>"/>
       </div>
-      <div class="float-right">
+      <div class="f-right">
         <input class="btn btn-success" type="submit" action="" value="Update"/>
         <a href="services.php"><div class="btn btn-danger">Cancel</div></a>
       </div>

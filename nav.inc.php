@@ -1,6 +1,6 @@
 <div class="nav" id="nav">
 
-	<h1>OB1 Admin</h1>
+	<img class="logo" src="images/EliteLogo.png"/>
 
 	<div class="spacer"></div>
 

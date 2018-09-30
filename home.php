@@ -49,28 +49,32 @@
 }
  ?>
 <div class="content">
-<h3>Home Page</h3>
-<?php echo $msg; ?>
-<div class="col-md-8">
+	<div class="heading-content">
+			<h3>Home Page</h3>
+			<div class="spacer"></div>
+			<a href="www.eliteimagedetailing.com" target="_blank"><div class="btn btn-primary">View Site</div></a>
+	</div>
+	<?php echo $msg; ?>
+<div class="inner-content">
 <form class="form" method="POST" action="<?php $_SERVER["PHP_SELF"]; ?>">
   <div class="form-group">
 
-      <label for="email">Email:<small>(Leave blank to remove Icon)</small></label>
+      <label for="email">Email: <small>(Leave blank to remove Icon)</small></label>
       <input class="form-control" name="email" type="text" value="<?php echo $formdata['email']; ?>"/>
 
-      <label for="phone">Phone:<small>(Leave blank to remove Icon)</small></label>
+      <label for="phone">Phone: <small>(Leave blank to remove Icon)</small></label>
       <input class="form-control" name="phone" type="text" value="<?php echo $formdata['phone']; ?>"/>
 
-      <label for="facebook">Facebook Link:<small>(Leave blank to remove Icon)</small></label>
+      <label for="facebook">Facebook Link: <small>(Leave blank to remove Icon)</small></label>
       <input class="form-control" name="facebook" type="text" value="<?php echo $formdata['facebook']; ?>"/>
 
-      <label for="instagram">Instagram Link:<small>(Leave blank to remove Icon)</small></label>
+      <label for="instagram">Instagram Link: <small>(Leave blank to remove Icon)</small></label>
       <input class="form-control" name="instagram" type="text" value="<?php echo $formdata['instagram']; ?>"/>
 
       <label for="intro">Introduction: <small>(5000 character limit)</small></label>
       <textarea class="form-control" name="intro" rows=10><?php echo $formdata['intro']; ?></textarea>
 
-      <input class="btn btn-success" type="submit" value="Submit"/>
+      <input class="text-right btn btn-success" type="submit" value="Save"/>
   </div>
 </form>
 </div>
