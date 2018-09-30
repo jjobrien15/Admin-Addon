@@ -9,6 +9,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
   $newPriceSmall = $_POST['newPriceSmall'];
   $newPriceMedium = $_POST['newPriceMedium'];
   $newPriceLarge= $_POST['newPriceLarge'];
+  $numOfDetails = $_POST['detailCounter'];
+  $count = 0;
 
   try{
     $sql = "INSERT INTO packages(title, priceSmall, priceMedium, priceLarge) VALUES (:title, :priceSmall, :priceMedium, :priceLarge)";
@@ -22,20 +24,32 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     echo $e->getMessage();
   }
 
-  $numOfDetails = $_POST['counter'];
-  while($count < $numOfDetails){
-    $count++;
-    $currentDetailTitle = $_POST['detail' . $count];
-    $currentDetailPackage = $_POST['package'];
-    try{
-      $sql="INSERT INTO details VALUES detail = :detail, package = :package";
-      $stmt = $pdo->prepare($sql);
-      $stmt->bindValue(":detail", "$currentDetailTitle");
-      $stmt->execute();
-    }catch(PDOException $e){
-      echo $e->getMessage();
-    }
-  }//end while*/
+  try{
+    $sql = "SELECT id FROM packages WHERE title = :title";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(":title", $newTitle);
+    $stmt->execute();
+    $package = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+    while($count < $numOfDetails){
+      $count++;
+      $currentDetailTitle = $_POST['detail' . $count];
+      $currentDetailPackage = $package['id'];
+      try{
+        $sql="INSERT INTO details(package, detail) VALUES (:package, :detail)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(":detail", $currentDetailTitle);
+        $stmt->bindValue(":package", $currentDetailPackage);
+        $stmt->execute();
+      }catch(PDOException $e){
+        echo $e->getMessage();
+      }
+    }//end while*/
+
+  }catch(PDOException $e){
+    echo $e->getMessage();
+  }
 
   header('Location: packages.php');
 }
@@ -48,30 +62,31 @@ var counter = 1;
     $('<div class="form-group"><label for="detail' +
     counter + '">New Perk: </label><input class="form-control" type="text" name="detail'+
     counter +'"/></div>').appendTo($('.extraPerk'));
+    $('#detailCounter').val(counter);
   }
 </script>
 <div class="content">
   <div class="heading-content">
-    <h3>Edit Package</h3>
+    <h3>Add Package</h3>
     <span class="spacer"></span>
     <a href="http://www.eliteimagedetailing.com" target="_blank"><div class="btn btn-primary">View Site</div></a>
   </div>
   <div class="inner-content">
     <form method="POST">
       <div class="form-group">
-        <label for="newTitle">Update Title: </label>
+        <label for="newTitle">Title: </label>
         <input class="form-control" type="text" name="newTitle"/>
       </div>
       <div class="form-group">
-        <label for="newPriceSmall">Update Price Small: </label>
+        <label for="newPriceSmall">Price Small: </label>
         <input class="form-control" type="text" name="newPriceSmall"/>
       </div>
       <div class="form-group">
-        <label for="newPriceMedium">Update Price Medium: </label>
+        <label for="newPriceMedium">Price Medium: </label>
         <input class="form-control" type="text" name="newPriceMedium"/>
       </div>
       <div class="form-group">
-        <label for="newPriceLarge">Update Price Large: </label>
+        <label for="newPriceLarge">Price Large: </label>
         <input class="form-control" type="text" name="newPriceLarge"/>
       </div>
       <div class="heading-content">
@@ -79,12 +94,12 @@ var counter = 1;
         <span class="spacer"></span>
         <input class="btn btn-success" type="button" onclick="addPerk();" value="Add Perk"/>
       </div>
-        <div class="form-group">
-          <label for="detail1">New Perk: </label>
-          <input class="form-control" type="text" name="detail1"/>
-        </div>
-        <!--<div class="extraPerk"></div>
-        <input type="hidden" name="counter" value="<script>counter</script>"/>-->
+      <div class="form-group">
+        <label for="detail1">New Perk: </label>
+        <input class="form-control" type="text" name="detail1"/>
+        <input id="detailCounter" type="hidden" name="detailCounter" value="1"/>
+      </div>
+      <div class="extraPerk"></div>
       <div class="f-right">
         <input class="btn btn-success" type="submit" value="Add"/>
         <a href="packages.php"><div class="btn btn-danger">Cancel</div></a>
