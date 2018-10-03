@@ -56,7 +56,7 @@
 	</div>
 	<?php echo $msg; ?>
 <div class="inner-content">
-<form class="form" method="POST" action="<?php $_SERVER["PHP_SELF"]; ?>">
+<form class="form" method="POST">
   <div class="form-group">
 
       <label for="email">Email: <small>(Leave blank to remove Icon)</small></label>

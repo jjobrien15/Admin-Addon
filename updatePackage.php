@@ -6,11 +6,11 @@ require 'nav.inc.php';
 $selectedPackage = $_GET['id'];
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  $newTitle = $_POST['newTitle'];
-  $priceSmall = $_POST['newPriceSmall'];
-  $priceMedium = $_POST['newPriceMedium'];
-  $priceLarge = $_POST['newPriceLarge'];
-  $count = $_POST['counter'];
+  $newTitle = trim($_POST['newTitle']);
+  $priceSmall = trim($_POST['newPriceSmall']);
+  $priceMedium = trim($_POST['newPriceMedium']);
+  $priceLarge = trim($_POST['newPriceLarge']);
+  $count = trim($_POST['counter']);
   $numOfDetails = 0;
 
   try{

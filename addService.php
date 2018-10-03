@@ -4,7 +4,7 @@ require 'header.inc.php';
 require 'nav.inc.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  $newService = $_POST['newService'];
+  $newService = trim($_POST['newService']);
   try{
     $sql = "INSERT INTO services(servname) VALUES (:servname)";
     $stmt = $pdo->prepare($sql);

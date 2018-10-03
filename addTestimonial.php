@@ -4,8 +4,8 @@ require 'header.inc.php';
 require 'nav.inc.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-  $author = $_POST['author'];
-  $body = $_POST['body'];
+  $author = trim($_POST['author']);
+  $body = trim($_POST['body']);
   try{
     $sql = "INSERT INTO testimonials(author, body) VALUES (:author, :body)";
     $stmt = $pdo->prepare($sql);

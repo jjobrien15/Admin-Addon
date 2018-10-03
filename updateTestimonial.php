@@ -4,8 +4,8 @@ require 'header.inc.php';
 require 'nav.inc.php';
 $selectedTestimonial = $_GET['id'];
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  $newAuthor = $_POST['newAuthor'];
-  $newBody = $_POST['newBody'];
+  $newAuthor = trim($_POST['newAuthor']);
+  $newBody = trim($_POST['newBody']);
   try{
     $sql="UPDATE testimonials SET author = :author, body = :body  WHERE id = :id";
     $stmt = $pdo->prepare($sql);

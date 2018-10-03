@@ -5,11 +5,11 @@ require 'nav.inc.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-  $newTitle = $_POST['newTitle'];
-  $newPriceSmall = $_POST['newPriceSmall'];
-  $newPriceMedium = $_POST['newPriceMedium'];
-  $newPriceLarge= $_POST['newPriceLarge'];
-  $numOfDetails = $_POST['detailCounter'];
+  $newTitle = trim($_POST['newTitle']);
+  $newPriceSmall = trim($_POST['newPriceSmall']);
+  $newPriceMedium = trim($_POST['newPriceMedium']);
+  $newPriceLarge= trim($_POST['newPriceLarge']);
+  $numOfDetails = trim($_POST['detailCounter']);
   $count = 0;
 
   try{

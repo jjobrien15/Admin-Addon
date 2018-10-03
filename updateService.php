@@ -4,7 +4,7 @@ require 'header.inc.php';
 require 'nav.inc.php';
 $selectedService = $_GET['id'];
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  $newService = $_POST['newServiceName'];
+  $newService = trim($_POST['newServiceName']);
   try{
     $sql="UPDATE services SET servname = :servname WHERE id = :id";
     $stmt = $pdo->prepare($sql);
