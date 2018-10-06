@@ -91,6 +91,10 @@ body{
   display: flex;
   flex:1;
 }
+.success{
+  display: none;
+  color: #1e7e34;
+}
 .center{
   display:flex;
   justify-content: center;

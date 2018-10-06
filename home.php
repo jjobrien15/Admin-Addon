@@ -3,7 +3,7 @@
 	require 'header.inc.php';
 	require 'nav.inc.php';
 
-	$msg = "";
+	$updateStatus = 0;
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     $formdata['email'] = trim($_POST['email']);
@@ -11,7 +11,7 @@
     $formdata['facebook'] = trim($_POST['facebook']);
     $formdata['instagram'] = trim($_POST['instagram']);
     $formdata['intro'] = trim($_POST['intro']);
-    //Try to update informations
+
     try{
       $sql = "UPDATE home SET email = :email , phone = :phone, facebook = :facebook, instagram = :instagram, intro = :intro";
       $stmt = $pdo->prepare($sql);
@@ -21,8 +21,7 @@
       $stmt ->bindValue(":instagram", $formdata['instagram']);
       $stmt ->bindValue(":intro", $formdata['intro']);
       $stmt->execute();
-			//Echo needs to be moved
-			$msg = "<script>alert('Updated Successfully!');</script>";
+			$updateStatus = 1;
     }catch(PDOException $e){
       echo $e->getMessage();
     }
@@ -40,21 +39,28 @@
     }catch(PDOException $e){
       echo $e->getMessage();
     }
-    $email_err = "";
-    $phone_err = "";
-    $facebook_err = "";
-    $instagram_err = "";
-    $intro_err = "";
-    $err = false;
 }
  ?>
 <div class="content">
 	<div class="heading-content">
 			<h3>Home Page</h3>
 			<div class="spacer"></div>
+			<?php
+				if($updateStatus == 1){
+			?>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$('#msg').fadeIn();
+					$('#msg').delay(3000).fadeOut();
+				});
+			</script>
+			<strong id="msg" class="text-success" style="display:none;">Updated!</strong>
+			<?php
+			}
+			?>
+			<div class="spacer"></div>
 			<a href="www.eliteimagedetailing.com" target="_blank"><div class="btn btn-primary">View Site</div></a>
 	</div>
-	<?php echo $msg; ?>
 <div class="inner-content">
 <form class="form" method="POST">
   <div class="form-group">

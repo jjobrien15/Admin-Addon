@@ -16,7 +16,8 @@ $rightnow = date("M jS, Y");
 	<link rel="stylesheet" type="text/css" href="styles.css"/>
 	<!-- adding font awesome -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
+	<!-- Adding jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
 
